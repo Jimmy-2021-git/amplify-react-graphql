@@ -12,10 +12,10 @@ import {
   View,
   withAuthenticator,
 } from '@aws-amplify/ui-react';
-import { listTodos } from "./graphql/queries";
+import { listNotes } from "./graphql/queries";
 import {
-  createTodo as createNoteMutation,
-  deleteTodo as deleteNoteMutation,
+  createNote as createNoteMutation,
+  deleteNote as deleteNoteMutation,
 } from "./graphql/mutations";
 
 const App = ({ signOut }) => {
@@ -26,8 +26,8 @@ const App = ({ signOut }) => {
   }, []);
 
   async function fetchNotes() {
-    const apiData = await API.graphql({ query: listTodos });
-    const notesFromAPI = apiData.data.listTodos.items;
+    const apiData = await API.graphql({ query: listNotes });
+    const notesFromAPI = apiData.data.listNotes.items;
     await Promise.all(
     notesFromAPI.map(async (note) => {
       if (note.image) {
@@ -40,7 +40,7 @@ const App = ({ signOut }) => {
   setNotes(notesFromAPI);
 }
 
-  async function createTodo(event) {
+  async function createNote(event) {
     event.preventDefault();
     const form = new FormData(event.target);
 	const image = form.get("image");
@@ -58,7 +58,7 @@ const App = ({ signOut }) => {
     event.target.reset();
   }
 
-  async function deleteTodo({ id ,name }) {
+  async function deleteNote({ id ,name }) {
     const newNotes = notes.filter((note) => note.id !== id);
     setNotes(newNotes);
 	await Storage.remove(name);
@@ -71,7 +71,7 @@ const App = ({ signOut }) => {
   return (
     <View className="App">
       <Heading level={1}>My Notes App</Heading>
-      <View as="form" margin="3rem 0" onSubmit={createTodo}>
+      <View as="form" margin="3rem 0" onSubmit={createNote}>
         <Flex direction="row" justifyContent="center">
            <TextField
             name="name"
@@ -121,7 +121,7 @@ const App = ({ signOut }) => {
 					/>
 				)}
 			
-			<Button variation="link" onClick={() => deleteTodo(note)}>
+			<Button variation="link" onClick={() => deleteNote(note)}>
               Delete note
             </Button>
           </Flex>
