@@ -58,7 +58,7 @@ const App = ({ signOut }) => {
     event.target.reset();
   }
 
-  async function deleteTodo({ id }) {
+  async function deleteTodo({ id ,name }) {
     const newNotes = notes.filter((note) => note.id !== id);
     setNotes(newNotes);
 	await Storage.remove(name);
@@ -73,13 +73,7 @@ const App = ({ signOut }) => {
       <Heading level={1}>My Notes App</Heading>
       <View as="form" margin="3rem 0" onSubmit={createTodo}>
         <Flex direction="row" justifyContent="center">
-          <View
-			name="image"
-			as="input"
-			type="file"
-			style={{ alignSelf: "end" }}
-			/>
-		  <TextField
+           <TextField
             name="name"
             placeholder="Note Name"
             label="Note Name"
@@ -95,6 +89,12 @@ const App = ({ signOut }) => {
             variation="quiet"
             required
           />
+		  <View
+			name="image"
+			as="input"
+			type="file"
+			style={{ alignSelf: "end" }}
+			/>
           <Button type="submit" variation="primary">
             Create Note
           </Button>
