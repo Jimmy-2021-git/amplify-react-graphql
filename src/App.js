@@ -21,6 +21,7 @@ import {
 const App = () => {
   const [notes, setNotes] = useState([]);
 
+
   useEffect(() => {
     fetchNotes();
   }, []);
