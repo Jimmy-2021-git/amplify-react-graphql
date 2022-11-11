@@ -18,6 +18,7 @@ import {
   deleteNote as deleteNoteMutation,
 } from "./graphql/mutations";
 
+
 const App = () => {
   const [notes, setNotes] = useState([]);
 
