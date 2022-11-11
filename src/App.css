@@ -40,35 +40,3 @@
 
 
 
-[data-amplify-authenticator] {
-  --amplify-border-widths-large: 1px;
-  --amplify-colors-background-primary: var(--amplify-colors-neutral-90);
-  --amplify-colors-background-secondary: var(--amplify-colors-neutral-100);
-  --amplify-colors-brand-primary-10: var(--amplify-colors-teal-100);
-  --amplify-colors-brand-primary-80: var(--amplify-colors-teal-40);
-  --amplify-colors-brand-primary-90: var(--amplify-colors-teal-20);
-  --amplify-colors-brand-primary-100: var(--amplify-colors-teal-10);
-  --amplify-colors-font-interactive: var(--amplify-colors-white);
- 
-}
-
-.amplify-button[data-variation='primary'] {
-  background: linear-gradient(
-    to right,
-    var(--amplify-colors-green-80),
-    var(--amplify-colors-orange-40)
-  );
-}
-
-.center {
-  margin: auto;
-  vertical-align: middle;
-  border: 3px solid green;
-  padding: 10px;
-}
-
-.img_boarder{
-	
-
-Padding: 100px,100px,100px,100px; 
-}

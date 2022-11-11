@@ -10,7 +10,7 @@ import {
   Text,
   TextField,
   View,
-   Authenticator,
+  withAuthenticator,
 } from '@aws-amplify/ui-react';
 import { listNotes } from "./graphql/queries";
 import {
@@ -19,7 +19,7 @@ import {
 } from "./graphql/mutations";
 
 
-const App = () => {
+const App = ({signOut}) => {
   const [notes, setNotes] = useState([]);
 
 
@@ -72,23 +72,7 @@ const App = () => {
 
   return (
     
-     
-     <React.Fragment>
-	  <View className="App">
-	
-
-	
-	
-	 <Image
-  alt="Sonopress"
-  src="https://mywebaudio2022.s3.ap-southeast-1.amazonaws.com/Sonopress_Logo_CMYK.jpg"
-    height="20%"
-  width="20%"
-   />
-     
-   </View>
-	  <Authenticator>
-      {({ signOut, user }) => (
+   
     <View className="App">
       <Heading level={1}>My Notes App</Heading>
       <View as="form" margin="3rem 0" onSubmit={createNote}>
@@ -150,10 +134,8 @@ const App = () => {
       </View>
       <Button onClick={signOut}>Sign Out</Button>
     </View>
-	    )}
-    </Authenticator>
-	  </React.Fragment>
+
   );
 };
 
-export default App;
+export default  withAuthenticator(App);
